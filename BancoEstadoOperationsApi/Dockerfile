@@ -12,6 +12,7 @@ RUN apt-get update \
     clang zlib1g-dev
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+RUN dotnet nuget add source https://nuget.cloud.302.cl/v3/index.json -n nuget.cloud.302.cl
 COPY ["BancoEstadoOperationsApi/BancoEstadoOperationsApi.csproj", "BancoEstadoOperationsApi/"]
 RUN dotnet restore "./BancoEstadoOperationsApi/BancoEstadoOperationsApi.csproj"
 COPY . .
